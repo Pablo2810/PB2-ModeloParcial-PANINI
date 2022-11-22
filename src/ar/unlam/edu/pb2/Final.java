@@ -11,7 +11,7 @@ public class Final extends Usuario {
 	}
 
 	@Override
-	void agregarFigurita(Figurita figurita, Sistema sistema) {
+	void agregarFigurita(Figurita figurita, Sistema sistema) throws FiguritaEnSistemaException {
 		figuritas.add(figurita);
 		sistema.agregarFigurita(figurita);
 	}

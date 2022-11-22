@@ -23,5 +23,5 @@ public abstract class Usuario {
 		this.nombre = nombre;
 	}
 	
-	abstract void agregarFigurita(Figurita figurita, Sistema sistema);
+	abstract void agregarFigurita(Figurita figurita, Sistema sistema) throws FiguritaEnSistemaException;
 }

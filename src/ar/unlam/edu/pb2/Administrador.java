@@ -7,7 +7,7 @@ public class Administrador extends Usuario {
 	}
 
 	@Override
-	void agregarFigurita(Figurita figurita, Sistema sistema) {
+	void agregarFigurita(Figurita figurita, Sistema sistema) throws FiguritaEnSistemaException {
 		sistema.agregarFigurita(figurita);
 	}
 

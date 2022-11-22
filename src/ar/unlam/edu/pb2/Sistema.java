@@ -5,14 +5,12 @@ import java.util.Set;
 import java.util.TreeSet;
 
 public class Sistema {
-	private Set<Figurita> figuritasADMIN;
-	private List<Figurita> figuritasFINAL;
+	private Set<Figurita> figuritas;
 	private List<Grupo> grupos;
 	private List<Seleccion> selecciones;
 	
 	public Sistema() {
-		this.figuritasADMIN = new TreeSet<>();
-		this.figuritasFINAL = new ArrayList<>();
+		this.figuritas = new TreeSet<>();
 		this.grupos = this.crearGrupos();
 		this.selecciones = this.crearSelecciones();
 	}
@@ -33,20 +31,12 @@ public class Sistema {
 		return misSelecciones;
 	}
 
-	public Set<Figurita> getFiguritasADMIN() {
-		return figuritasADMIN;
+	public Set<Figurita> getFiguritas() {
+		return figuritas;
 	}
 
-	public void setFiguritasADMIN(Set<Figurita> figuritasADMIN) {
-		this.figuritasADMIN = figuritasADMIN;
-	}
-
-	public List<Figurita> getFiguritasFINAL() {
-		return figuritasFINAL;
-	}
-
-	public void setFiguritasFINAL(List<Figurita> figuritasFINAL) {
-		this.figuritasFINAL = figuritasFINAL;
+	public void setFiguritas(Set<Figurita> figuritas) {
+		this.figuritas = figuritas;
 	}
 
 	public List<Grupo> getGrupos() {
@@ -84,8 +74,15 @@ public class Sistema {
 	}
 	
 
-	public void agregarFigurita(Figurita figurita) {
-		
+	public void agregarFigurita(Figurita figurita) throws FiguritaEnSistemaException {
+		if (!this.figuritas.contains(figurita)) {
+			this.figuritas.add(figurita);
+		}
+		throw new FiguritaEnSistemaException("LA FIGURITA YA ESTA EN EL SISTEMA");
+	}
+
+	public Integer cantidadFiguritas() {
+		return this.figuritas.size();
 	}
 	
 	

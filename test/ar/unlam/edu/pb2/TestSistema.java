@@ -1,4 +1,5 @@
 package ar.unlam.edu.pb2;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 import org.junit.Test;
@@ -28,18 +29,55 @@ public class TestSistema {
 	}
 	
 	@Test
-	public void queUnAdministradorPuedaAgregarUnaFigurita() throws GrupoNoEncontradoException, SeleccionNoEncontradaException {
+	public void queUnAdministradorPuedaAgregarUnaFigurita() throws GrupoNoEncontradoException, SeleccionNoEncontradaException, FiguritaEnSistemaException {
 		Sistema sistema = new Sistema();
 		Usuario admin = new Administrador(1,"ADMIN");
 		Grupo grupoE = sistema.buscarGrupoPorID(1);
 		Seleccion alemania = sistema.buscarSeleccionPorID(1);
 		Figurita figurita = new Figurita(1,grupoE,alemania,"Neuer",1200);
 		
-		sistema.agregarFigurita(admin, figurita);
+		admin.agregarFigurita(figurita, sistema);
+		
+		Integer valorEsp = 1;
+		Integer valObt = sistema.cantidadFiguritas();
+		
+		assertEquals(valorEsp, valObt);
 	}
 	
 	@Test
-	public void queUnUsuarioFinalPuedaAgregarUnaFigurita() {
+	public void queUnUsuarioFinalPuedaAgregarUnaFigurita() throws GrupoNoEncontradoException, SeleccionNoEncontradaException, FiguritaEnSistemaException {
+		Sistema sistema = new Sistema();
+		Usuario userFinal = new Final(1,"FINAL");
+		Grupo grupoE = sistema.buscarGrupoPorID(1);
+		Seleccion alemania = sistema.buscarSeleccionPorID(1);
+		Figurita figurita = new Figurita(1,grupoE,alemania,"Neuer",1200);
+		
+		userFinal.agregarFigurita(figurita, sistema);
+		
+		Integer valorEsp = 1;
+		Integer valObt = sistema.cantidadFiguritas();
+		
+		assertEquals(valorEsp, valObt);
+	}
+	
+	@Test
+	public void queLasFiguritasAgregadasDeFormaDesordenadaQuedenOrdenadas() {
 		
 	}
+	
+	@Test
+	public void queUnAdministradorNoPuedaAgregarUnaFiguritaExistente() {
+		
+	}
+	
+	@Test
+	public void queUnUsuarioFinalSiPuedaAgregarFiguritasExistentes() {
+		
+	}
+	
+	@Test
+	public void queUnUsuarioFinalPuedaPegarUnaFigurita() {
+		
+	}
+	
 }
