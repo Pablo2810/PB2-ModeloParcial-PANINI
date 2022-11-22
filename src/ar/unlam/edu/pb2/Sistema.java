@@ -5,12 +5,14 @@ import java.util.Set;
 import java.util.TreeSet;
 
 public class Sistema {
-	private Set<Figurita> figuritas;
+	private Set<Figurita> figuritasADMIN;
+	private List<Figurita> figuritasFINAL;
 	private List<Grupo> grupos;
 	private List<Seleccion> selecciones;
 	
 	public Sistema() {
-		this.figuritas = new TreeSet<>(); 
+		this.figuritasADMIN = new TreeSet<>();
+		this.figuritasFINAL = new ArrayList<>();
 		this.grupos = this.crearGrupos();
 		this.selecciones = this.crearSelecciones();
 	}
@@ -31,14 +33,22 @@ public class Sistema {
 		return misSelecciones;
 	}
 
-	public Set<Figurita> getFiguritas() {
-		return figuritas;
+	public Set<Figurita> getFiguritasADMIN() {
+		return figuritasADMIN;
 	}
-	
-	public void setFiguritas(Set<Figurita> figuritas) {
-		this.figuritas = figuritas;
+
+	public void setFiguritasADMIN(Set<Figurita> figuritasADMIN) {
+		this.figuritasADMIN = figuritasADMIN;
 	}
-	
+
+	public List<Figurita> getFiguritasFINAL() {
+		return figuritasFINAL;
+	}
+
+	public void setFiguritasFINAL(List<Figurita> figuritasFINAL) {
+		this.figuritasFINAL = figuritasFINAL;
+	}
+
 	public List<Grupo> getGrupos() {
 		return grupos;
 	}
@@ -71,6 +81,11 @@ public class Sistema {
 			}
 		}
 		throw new SeleccionNoEncontradaException("SELECCION NO ENCONTRADA");
+	}
+	
+
+	public void agregarFigurita(Figurita figurita) {
+		
 	}
 	
 	
